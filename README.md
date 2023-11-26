@@ -6,4 +6,4 @@
 학습이 완료된 항목은 체크박스로 표시됩니다.
 
 ### Basic
-- [x] Code Structure [바로가기](https://ko.javascript.info/structure)
+- [x] Code Structure [바로가기](https://github.com/ParkjiDev/core-javascript/blob/01.core/client/chapter/core/01.codeStructure.js)
