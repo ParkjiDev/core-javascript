@@ -20,6 +20,7 @@ const key = 'creator';
 // 진짜 Object가 가진 능력에 접근해서 hasOwnProperty써야하는데, javascript는 조상인 Object 접근해서 hasOwnProperty를 써야한다.
 // 따라서 call을 사용하여 hasOwnProperty를 사용.
 // console.log(Object.prototype.hasOwnProperty.call(javaScript, key));
+// console.log(({}).hasOwnProperty.call(javaScript, key));
 
 // for ~ in 문
 // - 객체 자신의 속성만 순환하려면?
