@@ -40,12 +40,14 @@ console.log(result);
 
 // 화살표 함수와 this
 
-// 일반 함수의 양면의 얼굴   // 생성자
+// 일반 함수의 양면의 얼굴   // 생성자로서의 역할, 일반 함수로서의 역할
 
+// 생성자로 쓸경우 맨앞글자 대문자
 // const Button = (name) =>{
 //   this.name = name;
 // }
 
+// 화살표 함수는 constructor 없기때문에 new 연산자 붙여서 사용할 수 없음
 // const b =  new Button('tiger');
 
 // function button(){
