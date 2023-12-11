@@ -59,3 +59,33 @@ const timer = setTimeout(function () {
 }, 3000);
 
 // 타이머 제거는 clearTimeout(timer)
+clearTimeout(timer);
+
+/* -------------------------------------------------------------------------- */
+
+/* setInterval(() => {
+  console.log('안녕');
+}, 1000); */
+
+/* let count = 0;
+const id = setInterval(() => {
+  // console.log(++count);
+  document.querySelector('.first').style.transform =
+    `translateY(${++count}px) rotate(${++count}deg)`;
+  if (count >= 300) {
+    clearInterval(id);
+  }
+}, 10); */
+
+let count = 0;
+function animation() {
+  console.log(++count);
+
+  const id = requestAnimationFrame(animation);
+
+  if (count >= 100) {
+    cancelAnimationFrame(id);
+  }
+}
+
+animation();
