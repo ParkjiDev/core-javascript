@@ -47,7 +47,7 @@ function handleClickBall({ offsetX: x, offsetY: y }) {
   }px)`;
 }
 
-//ground.addEventListener('click', handleClickBall);
+ground.addEventListener('click', handleClickBall);
 
 // 클릭 두 번 할 경우 두번째 클릭에선 공이 클릭되어 공의 좌표 가져오게됨. 따라서 pointer-events: none 해줌
 
@@ -69,27 +69,27 @@ function debounce(callback, limit = 100) {
   let timeout;
 
   return function (...args) {
-    // console.log(args);
     clearTimeout(timeout);
     timeout = setTimeout(() => {
+      // console.log('args', args);
       /* 여기서 전달되는 this는 ground
       debounce((e) => {
         console.log(e);
       }   이거는 화살표 함수여서 this가 없음. 
       따라서 apply 사용해 this 전해주고, e도 전달해주는거 */
       console.log('this', this);
-      console.log('callback', callback);
+      // console.log('callback', callback);
       callback.apply(this, args);
     }, limit);
   };
 }
 
-/* ground.addEventListener(
-  'mousemove',
-  debounce((e) => {
-    console.log(e);
-  })
-); */
+// ground.addEventListener(
+//   'mousemove',
+//   debounce(() => {
+//     console.log(this);
+//   })
+// );
 
 /* -------------------------------------------------------------------------- */
 function func(a, b) {
@@ -124,7 +124,7 @@ function throttle(callback, limit = 100) {
   let waiting = false;
   return function () {
     if (!waiting) {
-      callback();
+      callback.apply(this, arguments);
       waiting = true;
 
       setTimeout(() => {
@@ -134,9 +134,9 @@ function throttle(callback, limit = 100) {
   };
 }
 
-// ground.addEventListener(
-//   'mousemove',
-//   throttle((e) => {
-//     console.log(e);
-//   })
-// );
+ground.addEventListener(
+  'mousemove',
+  throttle(() => {
+    console.log(this);
+  }, 3000)
+);
