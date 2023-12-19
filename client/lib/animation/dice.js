@@ -1,11 +1,12 @@
 /*global gsap*/
 import { attr } from '../dom/attr.js';
 import { getNode } from '../dom/getNode.js';
+import { memo } from '../utils/memo.js';
 
-const cube = getNode('#cube');
+memo('cube', () => getNode('#cube'));
 
 let random;
-gsap.to(cube, {
+gsap.to(memo('cube'), {
   duration: 1,
   rotationX: 100,
   rotationY: -100,
@@ -16,7 +17,7 @@ export function diceAnimation() {
   random = gsap.utils.random([0, 1, 2, 3, 4, 5]);
 
   function complete() {
-    attr(cube, 'data-dice', random + 1);
+    attr(memo('cube'), 'data-dice', random + 1);
   }
 
   const rotationValue = [
@@ -28,7 +29,7 @@ export function diceAnimation() {
     [-180, 0], // 6
   ];
 
-  gsap.to(cube, {
+  gsap.to(memo('cube'), {
     ease: 'linear',
     duration: 0.2,
     z: -100,
