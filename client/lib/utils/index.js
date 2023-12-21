@@ -4,3 +4,4 @@ export * from './typeOf.js';
 export * from './xhr.js';
 export * from './delay.js';
 export * from './moong.js';
+export * from './color.js';

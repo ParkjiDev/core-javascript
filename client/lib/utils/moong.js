@@ -8,7 +8,7 @@ const defalutOptions = {
   },
 };
 
-const moong = async (options) => {
+export const moong = async (options) => {
   const { url, ...restOptions } = {
     ...defalutOptions,
     ...options,
@@ -17,8 +17,8 @@ const moong = async (options) => {
       ...options.headers,
     },
   };
-  console.log(url);
-  console.log(restOptions);
+  // console.log(url);
+  // console.log(restOptions);
 
   // fetch()는 promise를 return. method의 default는 GET
   const response = await fetch(url, restOptions);
@@ -40,5 +40,38 @@ const moong = async (options) => {
 //   },
 // });
 
-const user = await moong({ url: END_POINT });
-console.log(user.data);
+// const user = await moong({ url: END_POINT });
+// console.log(user.data);
+/* -------------------------------------------------------------------------- */
+
+moong.get = (url, options) => {
+  return moong({
+    url,
+    ...options,
+  });
+};
+moong.post = (url, body, options) => {
+  return moong({
+    method: 'POST',
+    url,
+    body: JSON.stringify(body),
+    ...options,
+  });
+};
+
+moong.delete = (url, options) => {
+  return moong({
+    method: 'DELETE',
+    url,
+    ...options,
+  });
+};
+
+moong.put = (url, body, options) => {
+  return moong({
+    method: 'PUT',
+    url,
+    body: JSON.stringify(body),
+    ...options,
+  });
+};
